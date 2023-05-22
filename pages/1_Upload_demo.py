@@ -2,13 +2,14 @@ import streamlit as st
 
 st.set_page_config(
     page_title="SLB Signs",
-    page_icon="🌍",
+    page_icon=":books:",
     )
 
 st.sidebar.success("Select another demo")
 
+st.title("Do you have a sign image to covert?!")
+
 # creating interface to upload data
-# st.markdown(f'# {list(demo_options.keys())[1]}')
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])

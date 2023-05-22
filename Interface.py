@@ -2,22 +2,29 @@ import streamlit as st
 
 # this is title of the page
 st.set_page_config(
-    page_title="SLB Signs",
-    page_icon="chart_with_upwards_trend",
+    page_title="Sign Language",
+    page_icon=":ok_hand:"#"chart_with_upwards_trend",
     )
 
 st.sidebar.success("Select a demo")
 
+
+st.title("Welcome dear friend")
+
 st.markdown(
     """
-    **👈 Select an option from the dropdown!
+    We can help you interpret [American sign language](https://en.wikipedia.org/wiki/American_Sign_Language) from:
+        \n - uploaded image or
+        \n - webcam stream
+        """
+    # Set the font size using HTML tags
+    "<h2 style='font-size: 32px;'>👈 Select an option from the dropdown!</h2>   "     
+    
+    , unsafe_allow_html=True)
 
-    We can help you interpret American sign language from:
-        \n 1. uploaded image
-        \n 2. webcam stream
-            
-    """
-)
+# Add an image to the main page
+image = "ASL_image.jpg"
+st.image(image, use_column_width=True)
 
 # demo_options = {
 #     "—": intro,
