@@ -1,13 +1,30 @@
 import streamlit as st
 
 # setting up a title
-'Sign language project welcomes you'
+st.set_page_config(
+    page_title="SLB Signs",
+    page_icon="chart_with_upwards_trend",
+    )
 
-# creating interface to upload data
-st.set_option('deprecation.showfileUploaderEncoding', False)
+st.sidebar.success("Select a demo")
 
-uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
+st.markdown(
+    """https://docs.streamlit.io/library/api-reference/utilities/st.set_page_config
+    **👈 Select an option from the dropdown!
 
-if uploaded_file is not None:
-    data = uploaded_file
-    st.write("filename:", data.name)
+    We can help you interpret American sign language from:
+        1. uploaded image
+        2. webcam stream
+            
+    """
+)
+
+# demo_options = {
+#     "—": intro,
+#     "Prediction from uploaded image": upload_demo,
+#     "Preditopn from webcam": webcam_demo,
+#     "References": team_info
+# }
+
+# demo_name = st.sidebar.selectbox("Choose an option", demo_options.keys())
+# demo_options[demo_name]()
