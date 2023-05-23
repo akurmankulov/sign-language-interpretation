@@ -12,11 +12,6 @@ st.set_page_config(
     page_icon=":books:",
     )
 
-st.set_page_config(
-    page_title="From image",
-#     page_icon=":books:",
-    )
-
 st.sidebar.success("Select another demo")
 
 st.title("Do you have a sign image to covert?!")
