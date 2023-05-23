@@ -2,55 +2,53 @@ import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
-# import tempfile
-# import importlib
-
-# module_name = "../baseline_predict"
-# module = importlib.import_module(module_name)
 
 import sys
 sys.path.append('../')
 from baseline_predict import Baseline
 
-# from "../baseline_predict" import Baseline
+st.set_page_config(
+    page_title="SLB Signs",
+    page_icon=":books:",
+    )
 
-# st.set_page_config(
-#     page_title="SLB Signs",
-#     page_icon=":books:",
-#     )
+st.set_page_config(
+    page_title="SLB Signs",
+    page_icon=":books:",
+    )
 
-# st.sidebar.success("Select another demo")
+st.sidebar.success("Select another demo")
 
-# st.title("Do you have a sign image to covert?!")
+st.title("Do you have a sign image to covert?!")
 
-# # creating interface to upload data
-# st.set_option('deprecation.showfileUploaderEncoding', False)
+# creating interface to upload data
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
-# uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
-# # 
-# if uploaded_file is not None:
-#     data = uploaded_file
-#     st.write("filename:", data.name)
-#     st.success('An image has been successfully uploaded! You are doing great!')
-    
-#     #convert image to test file for prediction - preproc
-#     uploaded_image = Image.open(data)
+uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
+#
+if uploaded_file is not None:
+    data = uploaded_file
+    st.write("filename:", data.name)
+    st.success('An image has been successfully uploaded! You are doing great!')
 
-#     res = cv2.resize(np.array(uploaded_image), dsize=(28, 28), interpolation=cv2.INTER_CUBIC)
+    #convert image to test file for prediction - preproc
+    uploaded_image = Image.open(data)
 
-#     # Convert to grayscale
-#     grayscale_image = cv2.cvtColor(res, cv2.COLOR_RGB2GRAY)
+    res = cv2.resize(np.array(uploaded_image), dsize=(28, 28), interpolation=cv2.INTER_CUBIC)
 
-#     # Reshape to (28, 28, 1)
-#     reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
+    # Convert to grayscale
+    grayscale_image = cv2.cvtColor(res, cv2.COLOR_RGB2GRAY)
 
-#     # Save the resized image as a temporary file
-#     # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-#     #     temp_path = temp_file.name
-#     #     cv2.imwrite(temp_path, uploaded_image)
+    # Reshape to (28, 28, 1)
+    reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
 
-#     #using the model to predict
-#     model=Baseline()
-#     answer = model.predict(reshaped_image)
+    # Save the resized image as a temporary file
+    # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+    #     temp_path = temp_file.name
+    #     cv2.imwrite(temp_path, uploaded_image)
 
-#     st.write("the sign means", answer)
+    #using the model to predict
+    model=Baseline()
+    answer = model.predict(reshaped_image)
+
+    st.write("the sign means", answer)
