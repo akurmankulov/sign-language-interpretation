@@ -1,6 +1,7 @@
 streamlit                             
 streamlit_webrtc                                                           
-opencv-python                             
+opencv-python-headless
+libgl1-mesa-glx                             
 mediapipe==0.8.9.1
 notebook
 pillow
