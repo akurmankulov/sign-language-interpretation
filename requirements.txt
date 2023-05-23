@@ -1,6 +1,7 @@
 streamlit                             
 streamlit_webrtc                                                           
-opencv-python-headless                       
+opencv-python-headless
+opencv-contrib-python-headless                       
 mediapipe==0.8.9.1
 notebook
 pillow
