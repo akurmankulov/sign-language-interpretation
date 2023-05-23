@@ -13,8 +13,8 @@ st.set_page_config(
     )
 
 st.set_page_config(
-    page_title="SLB Signs",
-    page_icon=":books:",
+    page_title="From image",
+#     page_icon=":books:",
     )
 
 st.sidebar.success("Select another demo")
