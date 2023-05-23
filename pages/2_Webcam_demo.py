@@ -19,7 +19,8 @@ st.title("Shall we try to do it live?!")
 picture = st.camera_input("Let's get your webcam in action and grab a picture...")
 if picture:
     #preprocess
-    grayscale_image = cv2.cvtColor(picture, cv2.COLOR_RGB2GRAY)
+    uploaded_image = Image.open(picture)
+    grayscale_image = cv2.cvtColor(uploaded_image, cv2.COLOR_RGB2GRAY)
     reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
 
     #get the prediction
