@@ -1,18 +1,19 @@
-import streamlit as st
 import cv2
-import numpy as np
 
-img_file_buffer = st.camera_input("Take a picture")
+cap = cv2.VideoCapture()
 
-if img_file_buffer is not None:
-    # To read image file buffer with OpenCV:
-    bytes_data = img_file_buffer.getvalue()
-    cv2_img = cv2.imdecode(np.frombuffer(bytes_data, np.uint8), cv2.IMREAD_COLOR)
+# Check if the webcam is opened correctly
+if not cap.isOpened():
+    raise IOError("Cannot open webcam")
 
-    # Check the type of cv2_img:
-    # Should output: <class 'numpy.ndarray'>
-    st.write(type(cv2_img))
+while True:
+    ret, frame = cap.read()
+    frame = cv2.resize(frame, None, fx=0.5, fy=0.5, interpolation=cv2.INTER_AREA)
+    cv2.imshow('Input', frame)
 
-    # Check the shape of cv2_img:
-    # Should output shape: (height, width, channels)
-    st.write(cv2_img.shape)
+    c = cv2.waitKey(1)
+    if c == 27:
+        break
+
+cap.release()
+cv2.destroyAllWindows()
