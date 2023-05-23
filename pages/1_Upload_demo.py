@@ -2,17 +2,15 @@ import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
-# import tempfile
-# import importlib
-
-# module_name = "../baseline_predict"
-# module = importlib.import_module(module_name)
 
 import sys
 sys.path.append('../')
 from baseline_predict import Baseline
 
-# from "../baseline_predict" import Baseline
+st.set_page_config(
+    page_title="SLB Signs",
+    page_icon=":books:",
+    )
 
 st.set_page_config(
     page_title="SLB Signs",
@@ -27,12 +25,12 @@ st.title("Do you have a sign image to covert?!")
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
 uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
-# 
+#
 if uploaded_file is not None:
     data = uploaded_file
     st.write("filename:", data.name)
     st.success('An image has been successfully uploaded! You are doing great!')
-    
+
     #convert image to test file for prediction - preproc
     uploaded_image = Image.open(data)
 
