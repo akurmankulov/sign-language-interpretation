@@ -164,3 +164,4 @@ cython_debug/
 
 #ignoring raw data folder
 raw_data
+.python-version
