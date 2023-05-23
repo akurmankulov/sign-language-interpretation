@@ -46,4 +46,4 @@ st.set_page_config(
 #     model=Baseline()
 #     answer = model.predict(reshaped_image)
 
-st.write("the sign means", answer)
+st.write("the sign means")#, answer)
