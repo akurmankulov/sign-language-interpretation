@@ -1,7 +1,6 @@
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer
 
-st.title("My first Streamlit app")
-st.write("Hello, world")
+picture = st.camera_input("Take a pic!")
 
-webrtc_streamer(key="example")
+if picture:
+    st.image(picture)
