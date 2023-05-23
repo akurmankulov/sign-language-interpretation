@@ -46,4 +46,4 @@ if uploaded_file is not None:
     model=Baseline()
     answer = model.predict(reshaped_image)
 
-st.write("the sign means")#, answer)
+    st.write("the sign means", answer)

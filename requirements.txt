@@ -10,6 +10,7 @@ numpy
 #streamlit and tensorflow
 streamlit-webrtc
 streamlit
+tensorflow
 # hydralit_components
 pillow
 # click==7.1.2
