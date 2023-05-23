@@ -12,38 +12,38 @@ st.set_page_config(
     page_icon=":books:",
     )
 
-# st.sidebar.success("Select another demo")
+st.sidebar.success("Select another demo")
 
-# st.title("Do you have a sign image to covert?!")
+st.title("Do you have a sign image to covert?!")
 
-# # creating interface to upload data
-# st.set_option('deprecation.showfileUploaderEncoding', False)
+# creating interface to upload data
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
-# uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
-# #
-# if uploaded_file is not None:
-#     data = uploaded_file
-#     st.write("filename:", data.name)
-#     st.success('An image has been successfully uploaded! You are doing great!')
+uploaded_file = st.file_uploader("Choose an image file :sunglasses:", type=['png', 'jpg'])
+#
+if uploaded_file is not None:
+    data = uploaded_file
+    st.write("filename:", data.name)
+    st.success('An image has been successfully uploaded! You are doing great!')
 
-#     #convert image to test file for prediction - preproc
-#     uploaded_image = Image.open(data)
+    #convert image to test file for prediction - preproc
+    uploaded_image = Image.open(data)
 
-#     res = cv2.resize(np.array(uploaded_image), dsize=(28, 28), interpolation=cv2.INTER_CUBIC)
+    res = cv2.resize(np.array(uploaded_image), dsize=(28, 28), interpolation=cv2.INTER_CUBIC)
 
-#     # Convert to grayscale
-#     grayscale_image = cv2.cvtColor(res, cv2.COLOR_RGB2GRAY)
+    # Convert to grayscale
+    grayscale_image = cv2.cvtColor(res, cv2.COLOR_RGB2GRAY)
 
-#     # Reshape to (28, 28, 1)
-#     reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
+    # Reshape to (28, 28, 1)
+    reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
 
-#     # Save the resized image as a temporary file
-#     # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
-#     #     temp_path = temp_file.name
-#     #     cv2.imwrite(temp_path, uploaded_image)
+    # Save the resized image as a temporary file
+    # with tempfile.NamedTemporaryFile(delete=False) as temp_file:
+    #     temp_path = temp_file.name
+    #     cv2.imwrite(temp_path, uploaded_image)
 
-#     #using the model to predict
-#     model=Baseline()
-#     answer = model.predict(reshaped_image)
+    #using the model to predict
+    model=Baseline()
+    answer = model.predict(reshaped_image)
 
 st.write("the sign means")#, answer)
