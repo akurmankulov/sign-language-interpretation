@@ -13,3 +13,4 @@ streamlit-webrtc
 streamlit
 hydralit_components
 pillow
+click==7.1.2
