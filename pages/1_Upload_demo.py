@@ -12,6 +12,11 @@ st.set_page_config(
     page_icon=":books:",
     )
 
+st.set_page_config(
+    page_title="SLB Signs",
+    page_icon=":books:",
+    )
+
 st.sidebar.success("Select another demo")
 
 st.title("Do you have a sign image to covert?!")
