@@ -21,9 +21,9 @@ from baseline_predict import Baseline
 #     #preprocess
 #     grayscale_image = cv2.cvtColor(picture, cv2.COLOR_RGB2GRAY)
 #     reshaped_image = np.reshape(grayscale_image, (28, 28, 1))
-    
+
 #     #get the prediction
 #     model=Baseline()
 #     answer = model.predict(reshaped_image)
 
-#     st.write("the sign means", answer)
+st.write("the sign means")#, answer)
