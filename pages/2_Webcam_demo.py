@@ -2,6 +2,9 @@ import streamlit as st
 import cv2
 import numpy as np
 from PIL import Image
+import sys
+sys.path.append('../')
+from baseline_predict import Baseline
 
 st.set_page_config(
     page_title="SLB Signs",
