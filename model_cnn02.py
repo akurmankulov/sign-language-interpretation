@@ -28,7 +28,7 @@ class  ModelCNN02:
 
     def predict(self,img):
         """
-        This function need to input a 28x28 size image. Convert it first if not in thie format
+        This function need to input a 56x56 size image. Convert it first if not in thie format
         """
         if img.shape == (56,56):
             X = expand_dims(np.reshape(img,(56,56,1)),axis = 0)
