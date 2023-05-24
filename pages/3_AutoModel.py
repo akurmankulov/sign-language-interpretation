@@ -6,7 +6,7 @@ from keras.models import load_model  # TensorFlow is required for Keras to work
 
 st.set_page_config(
     page_title="SLB Signs",
-    page_icon=":selfie:"#"👋",
+    page_icon=":auto:"#"👋",
     )
 
 st.sidebar.success("Select another demo")
