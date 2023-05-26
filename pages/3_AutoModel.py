@@ -29,10 +29,10 @@ picture = st.camera_input("Let's get your webcam in action and grab a picture...
 if picture:
     # Preprocess
     uploaded_image = Image.open(picture)
-    st.write("type of uploaded image is:", type(uploaded_image))
     
-#     image_np = np.array(uploaded_image)
-
+    
+    image_np = np.array(uploaded_image)
+    st.write("type of uploaded image is:", type(image_np))
 #     # Convert the image to RGB format if needed
 #     if image_np.shape[2] == 4:  # Check if image has an alpha channel
 #         image_np = image_np[:, :, :3]  # Remove alpha channel
