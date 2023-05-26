@@ -27,11 +27,15 @@ recognizer = vision.GestureRecognizer.create_from_options(options)
 #read image from webcam
 picture = st.camera_input("Let's get your webcam in action and grab a picture...")
 if picture:
-    #preprocess
+    # Preprocess
     uploaded_image = Image.open(picture)
+    image_np = np.array(uploaded_image)
+
+    # Convert the image to Mediapipe format
+    image_mp = mp.Image.create_from_nparray(image_np)
     
     # STEP 4: Recognize gestures in the input image.
-    recognition_result = recognizer.recognize(uploaded_image)
+    recognition_result = recognizer.recognize(image_mp)
     top_gesture = recognition_result.gestures[0][0]
         
     # Print prediction and confidence score
