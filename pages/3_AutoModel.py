@@ -40,8 +40,7 @@ if picture:
     # Convert the RGB image to a mediapipe image
     image_mp = mp.Image(image_data=image_rgb.tobytes(),
                         width=image_rgb.shape[1],
-                        height=image_rgb.shape[0],
-                        color_space=mp.ColorSpace.RGB)
+                        height=image_rgb.shape[0])
     
     # STEP 4: Recognize gestures in the input image.
     recognition_result = recognizer.recognize(image_mp)
