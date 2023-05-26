@@ -27,7 +27,7 @@ recognizer = vision.GestureRecognizer.create_from_options(options)
 #read image from webcam
 picture = st.camera_input("Let's get your webcam in action and grab a picture...")
 if picture:
-     # Preprocess
+    # Preprocess
     uploaded_image = Image.open(picture)
     image_np = np.array(uploaded_image)
 
@@ -37,12 +37,11 @@ if picture:
 
     image_rgb = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)  # Convert to RGB format
 
-    # Save the image to a temporary file
-    temp_file = "temp.jpg"
-    cv2.imwrite(temp_file, image_rgb)
-
-    # Read the image using Mediapipe's imread function
-    image_mp = mp.imread(temp_file)
+    # Convert the RGB image to a mediapipe image
+    image_mp = mp.Image(image_data=image_rgb.tobytes(),
+                        width=image_rgb.shape[1],
+                        height=image_rgb.shape[0],
+                        color_space=mp.ColorSpace.RGB)
     
     # STEP 4: Recognize gestures in the input image.
     recognition_result = recognizer.recognize(image_mp)
