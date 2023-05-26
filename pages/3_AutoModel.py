@@ -29,22 +29,24 @@ picture = st.camera_input("Let's get your webcam in action and grab a picture...
 if picture:
     # Preprocess
     uploaded_image = Image.open(picture)
-    image_np = np.array(uploaded_image)
-
-    # Convert the image to RGB format if needed
-    if image_np.shape[2] == 4:  # Check if image has an alpha channel
-        image_np = image_np[:, :, :3]  # Remove alpha channel
-
-    image_rgb = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)  # Convert to RGB format
-
-    # Convert the RGB image to a mediapipe image
-    image_mp = mp.Image(image_data=image_rgb.tobytes(),
-                        width=image_rgb.shape[1],
-                        height=image_rgb.shape[0])
+    st.write("type of uploaded image is:", type(uploaded_image))
     
-    # STEP 4: Recognize gestures in the input image.
-    recognition_result = recognizer.recognize(image_mp)
-    top_gesture = recognition_result.gestures[0][0]
+#     image_np = np.array(uploaded_image)
+
+#     # Convert the image to RGB format if needed
+#     if image_np.shape[2] == 4:  # Check if image has an alpha channel
+#         image_np = image_np[:, :, :3]  # Remove alpha channel
+
+#     image_rgb = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)  # Convert to RGB format
+
+#     # Convert the RGB image to a mediapipe image
+#     image_mp = mp.Image(image_data=image_rgb.tobytes(),
+#                         width=image_rgb.shape[1],
+#                         height=image_rgb.shape[0])
+    
+#     # STEP 4: Recognize gestures in the input image.
+#     recognition_result = recognizer.recognize(image_mp)
+#     top_gesture = recognition_result.gestures[0][0]
         
-    # Print prediction and confidence score
-    st.write("Letter:", top_gesture)
+#     # Print prediction and confidence score
+#     st.write("Letter:", top_gesture)
