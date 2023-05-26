@@ -31,8 +31,14 @@ if picture:
     uploaded_image = Image.open(picture)
     image_np = np.array(uploaded_image)
 
-    # Convert the image to Mediapipe format
-    image_mp = mp.Image.create_from_nparray(image_np)
+    # Convert the image to RGB format if needed
+    if image_np.shape[2] == 4:  # Check if image has an alpha channel
+        image_np = image_np[:, :, :3]  # Remove alpha channel
+
+    image_rgb = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)  # Convert to RGB format
+
+    # Create a copy of the image in Mediapipe format
+    image_mp = mp.Image(image=image_rgb)
     
     # STEP 4: Recognize gestures in the input image.
     recognition_result = recognizer.recognize(image_mp)
