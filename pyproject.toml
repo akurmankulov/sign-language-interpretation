@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "sign-language-interpretation"
+version = "0.1.0"
+description = "testing sign language"
+authors = ["yakov kozlov <ykozlov@slb.com>"]
+readme = "README.md"
+packages = [{include = "sign_language_interpretation"}]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.9.7 || >3.9.7,<3.12"
+tensorflow = "^2.12.0"
+numpy = "^1.22"
+Pillow = "^9.5.0"
+opencv-python-headless = "^4.7.0.72"
+opencv-contrib-python-headless = "^4.7.0.72"
+streamlit = "^1.22.0"
+streamlit-webrtc = "^0.45.0"
+pandas = "^2.0.1"
+cvzone = "^1.5.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
