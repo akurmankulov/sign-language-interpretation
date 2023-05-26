@@ -30,17 +30,9 @@ if picture:
     #preprocess
     uploaded_image = Image.open(picture)
     
-images = []
-results = []
-for image_file_name in IMAGE_FILENAMES:
     # STEP 4: Recognize gestures in the input image.
-    recognition_result = recognizer.recognize(image)
-
-    # STEP 5: Process the result. In this case, visualize it.
-    images.append(image)
+    recognition_result = recognizer.recognize(uploaded_image)
     top_gesture = recognition_result.gestures[0][0]
-    hand_landmarks = recognition_result.hand_landmarks
-    results.append((top_gesture, hand_landmarks))
-
+        
     # Print prediction and confidence score
-    st.write("Letter:", results[0][0].category_name)
+    st.write("Letter:", top_gesture)
