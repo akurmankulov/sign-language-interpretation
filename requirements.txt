@@ -3,8 +3,8 @@ pip>=9
 # utilities
 # aiortc==1.2.1
 # typing-extensions==3.7.4.3
-opencv-python-headless
-opencv-contrib-python-headless
+# opencv-python-headless
+# opencv-contrib-python-headless
 # cvzone
 numpy
 #streamlit and tensorflow
