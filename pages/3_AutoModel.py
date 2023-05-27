@@ -11,45 +11,43 @@ st.set_page_config(
 
 st.title("Shall we try to do it live?!")
 
+# Let's call our mediapipe expert in gestures - The Recognizer
 import urllib.request
 urllib.request.urlretrieve('https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/1/gesture_recognizer.task', 'gesture_recognizer.task')
 
-# STEP 1: Import the necessary modules.
+# Import the necessary modules.
 import mediapipe as mp
 from mediapipe.tasks import python
 from mediapipe.tasks.python import vision
 
-# STEP 2: Create an GestureRecognizer object.
+# Initiate GestureRecognizer object.
 base_options = python.BaseOptions(model_asset_path='gesture_recognizer.task')
 options = vision.GestureRecognizerOptions(base_options=base_options)
 recognizer = vision.GestureRecognizer.create_from_options(options)
 
-#read image from webcam
+# Read image from webcam
 picture = st.camera_input("Let's get your webcam in action and grab a picture...")
 if picture:
-    # Preprocess
+    # Preprocessing
     uploaded_image = Image.open(picture)
-    image_np = np.array(uploaded_image)
-#     st.write("type of uploaded image is:", type(image_np))
-    
-    # Load the input image from a numpy array.
+    image_np = np.array(uploaded_image) # have to convert to numpy array to be readable by mediapipe Image
     mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image_np)
-    
-    # STEP 4: Recognize gestures in the input image.
+
+    # Recognize gestures in the input image.
     recognition_result = recognizer.recognize(mp_image)
     top_gesture = recognition_result.gestures[0][0].category_name
-        
-    # Set up dictionary to convert pre-defined gestures:
+
+    # Set up dictionary to convert pre-defined gestures for fun:
     dict ={"Unrecognized" : "Unrecognized",
-          "Closed_Fist" : "Calm down",
+          "Closed_Fist" : "Something between S and A",
            "Open_Palm" : "Let the magic begins",
-           "Pointing_Up" : "it's leter D, remember?!",
+           "Pointing_Up" : "it's letter D, remember?!",
            "Thumb_Down" : "Have to repeat the bootcamp",
            "Thumb_Up" : "Good job! True SLB spirit",
            "Victory" : "it's still letter V",
-           "ILoveYou" : "rock'n'roll",
+           "ILoveYou" : "i loooooooove it",
            "None" : "Try harder"
           }
-    
+
     # Print prediction and confidence score
     st.write(dict[top_gesture])
