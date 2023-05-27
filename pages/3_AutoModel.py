@@ -37,7 +37,18 @@ if picture:
     
     # STEP 4: Recognize gestures in the input image.
     recognition_result = recognizer.recognize(mp_image)
-    top_gesture = recognition_result.gestures[0][0]
+    top_gesture = recognition_result.gestures[0][0].category_name
         
+    # Set up dictionary to convert pre-defined gestures:
+    dict ={"Unrecognized" : "Unrecognized",
+          "Closed_Fist" : "Calm down",
+           "Open_Palm" : "Let the magic begins",
+           "Pointing_Up" : "it's leter D, remember?!",
+           "Thumb_Down" : "Have to repeat the bootcamp",
+           "Thumb_Up" : "Good job! True SLB spirit",
+           "Victory" : "it's still letter V",
+           "ILoveYou" : "rock'n'roll'
+          }
+    
     # Print prediction and confidence score
-    st.write("Letter:", top_gesture.category_name)
+    st.write(dict[top_gesture])
