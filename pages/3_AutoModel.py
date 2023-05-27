@@ -40,4 +40,4 @@ if picture:
     top_gesture = recognition_result.gestures[0][0]
         
     # Print prediction and confidence score
-    st.write("Letter:", top_gesture)
+    st.write("Letter:", top_gesture.category_name)
