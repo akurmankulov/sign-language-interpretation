@@ -7,11 +7,6 @@ import sys
 sys.path.append('../')
 from model_cnn02 import ModelCNN02
 
-st.set_page_config(
-    page_title="SLB Signs",
-    page_icon=":books:",
-    )
-
 st.sidebar.success("Select another demo")
 
 st.title("Do you have a sign image to covert?!")
