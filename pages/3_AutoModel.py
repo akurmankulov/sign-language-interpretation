@@ -47,7 +47,7 @@ if picture:
            "Thumb_Down" : "Have to repeat the bootcamp",
            "Thumb_Up" : "Good job! True SLB spirit",
            "Victory" : "it's still letter V",
-           "ILoveYou" : "rock'n'roll'
+           "ILoveYou" : "rock'n'roll',
           }
     
     # Print prediction and confidence score
