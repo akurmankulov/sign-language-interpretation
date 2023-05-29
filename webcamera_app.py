@@ -16,9 +16,11 @@ import math
 #     labels = [i.split()[1] for i in f.readlines()]
 
 
-class VideoProcessor(VideoTransformerBase):
+class MyVideoTransformer(VideoTransformerBase):
+    def __init__(self):
+        self.hand_detector = HandDetector(maxHands=1)
+
     def transform(self, frame):
-        print('Hello')
         return frame
         # img = frame.to_image()
         # imgOutput = img.copy()
@@ -71,7 +73,7 @@ RTC_CONFIGURATION = RTCConfiguration(
 
 webrtc_streamer( #webrtc_ctx =
     key="key",
-    video_processor_factory=VideoProcessor,
+    video_processor_factory=MyVideoTransformer,
     mode=WebRtcMode.SENDRECV,
     rtc_configuration=RTC_CONFIGURATION,
     media_stream_constraints={"video": True, "audio": False},
