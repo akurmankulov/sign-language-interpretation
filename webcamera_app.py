@@ -3,7 +3,7 @@ import cv2
 from cvzone.HandTrackingModule import HandDetector
 from tensorflow.keras.models import load_model
 import av
-from streamlit_webrtc import VideoTransformerBase, webrtc_streamer
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 import numpy as np
 import math
 
@@ -62,9 +62,16 @@ class VideoProcessor:
 
 
 st.title("Sign language interpreter")
+
+RTC_CONFIGURATION = RTCConfiguration(
+    {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+)
+
 webrtc_ctx = webrtc_streamer(
     key="object-detection",
     video_transformer_factory=VideoProcessor,
+    mode=WebRtcMode.SENDRECV,
+    rtc_configuration=RTC_CONFIGURATION,
     media_stream_constraints={"video": True, "audio": False},
     async_transform=True
 )
