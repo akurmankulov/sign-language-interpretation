@@ -15,7 +15,6 @@ import math
 # with open('labels_4.txt') as f:
 #     labels = [i.split()[1] for i in f.readlines()]
 
-
 class MyVideoTransformer(VideoProcessorBase):
     def __init__(self):
         self.hand_detector = HandDetector(maxHands=1)
@@ -72,7 +71,7 @@ RTC_CONFIGURATION = RTCConfiguration(
      {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
 )
 
-webrtc_streamer( #webrtc_ctx =
+webrtc_ctx = webrtc_streamer(
     key="key",
     video_processor_factory=MyVideoTransformer,
     mode=WebRtcMode.SENDRECV,
