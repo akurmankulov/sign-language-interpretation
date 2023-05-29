@@ -4,7 +4,7 @@ opencv-python-headless
 #opencv-contrib-python-headless
 cvzone
 #opencv-python
-mediapipe==0.8.9
+mediapipe#==0.8.9
 pip>=9
 aiortc
 numpy
