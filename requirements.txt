@@ -7,7 +7,5 @@ opencv-python
 mediapipe==0.8.9
 pip>=9
 aiortc
-typing-extensions
 numpy
 tensorflow
-hydralit_components
