@@ -14,9 +14,10 @@ from tensorflow.keras.backend import expand_dims
 
 ##################################################
 # Usage:
-# from model_cnn01 import ModelCNN01
-# model = ModelCNN01()
-# model.predict(image)
+# from aslr import ASLRecognition
+# model = ASLRecognition()
+# model.loadmodel('model_path') where model_path is the location of model
+# model.predict(image) the image should be an numpy array with np.uint8 as dtype
 #################################################
 
 
