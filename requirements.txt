@@ -1,5 +1,5 @@
-streamlit-webrtc==0.31.3
-streamlit==1.2.0
+streamlit-webrtc
+streamlit
 #opencv-python-headless
 #opencv-contrib-python-headless
 cvzone
