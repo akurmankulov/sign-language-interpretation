@@ -1,9 +1,9 @@
 streamlit-webrtc
 streamlit
-#opencv-python-headless
+opencv-python-headless
 #opencv-contrib-python-headless
 cvzone
-opencv-python
+#opencv-python
 mediapipe==0.8.9
 pip>=9
 aiortc
