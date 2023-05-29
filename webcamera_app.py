@@ -21,7 +21,8 @@ class MyVideoTransformer(VideoTransformerBase):
         self.hand_detector = HandDetector(maxHands=1)
 
     def transform(self, frame):
-        return frame
+        hands, image_hand = self.hand_detector.findHands(frame)
+        return hands, image_hand
         # img = frame.to_image()
         # imgOutput = img.copy()
         # hands, img = detector.findHands(img)
