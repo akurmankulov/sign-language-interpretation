@@ -1,6 +1,6 @@
 streamlit
 streamlit_webrtc
-opencv-python
+opencv-python-headless
 mediapipe==0.8.9.1
 cvzone
 numpy
@@ -8,6 +8,6 @@ tensorflow
 #pip>=9
 #aiortc==1.2.1
 #typing-extensions==3.7.4.3
-#opencv-python-headless
+#opencv-python
 #opencv-contrib-python-headless
 
