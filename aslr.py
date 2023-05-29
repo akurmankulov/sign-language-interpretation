@@ -38,24 +38,26 @@ class  ASLRecognition:
         self.threshold_ = threshold
         return self
 
-    def input_preprocessing(self, image, color_mode = 'rgb', img_size = 300, rescale = None):
+    def input_preprocessing(self, image, color_mode = 'rgb', img_size = (300,300), rescale = None):
         """
         The input image format should be a numpy array, and the rescale is the scaler used to divide the image for normalization
         """
-        if color_mode != 'rgb':
-            img = np.array(Image.fromarray(image).convert('RGB'))
-        else:
-            img = np.array(Image.fromarray(image))
+        # if color_mode != 'rgb':
+        #     img = np.array(Image.fromarray(image).convert('RGB'))
+        # else:
+        #     img = np.array(Image.fromarray(image))
 
-        if img_size != 300:
-            img = cv2.resize(img,(img_size,img_size))
+        img = np.array(image)
+
+        if img_size != img.shape[:2]:
+            img = cv2.resize(img,img_size)
 
         if rescale:
             img  = img*1.0/rescale
 
         return expand_dims(img,axis = 0)
 
-    def predict(self, image, color_mode = 'rgb', img_size = 300, rescale = None):
+    def predict(self, image, color_mode = 'rgb', img_size = (300,300), rescale = None):
         X = self.input_preprocessing(image,color_mode=color_mode,img_size=img_size,rescale=rescale)
         pred = self.model_.predict(X)
         prob = np.max(pred)
