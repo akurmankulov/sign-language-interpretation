@@ -7,6 +7,11 @@ from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration, Vide
 import numpy as np
 import math
 
+st.title("My first Streamlit app")
+st.write("Hello, world")
+
+webrtc_streamer(key="example")
+
 # detector = HandDetector(maxHands=1)
 # model = load_model("./base_line_model/base_cnn_model")
 # offset = 20
@@ -15,13 +20,16 @@ import math
 # with open('labels_4.txt') as f:
 #     labels = [i.split()[1] for i in f.readlines()]
 
-class MyVideoTransformer(VideoProcessorBase):
-    def __init__(self):
-        self.hand_detector = HandDetector(maxHands=1)
+# class MyVideoTransformer(VideoProcessorBase):
+#     def __init__(self):
+#         self.hand_detector = HandDetector(maxHands=1)
 
-    def recv(self, frame):
-        hands, image_hand = self.hand_detector.findHands(frame)
-        return hands, image_hand
+#     def recv(self, frame):
+#         img = frame.to_ndarray(format="bgr24")
+#         hands, image_hand = self.hand_detector.findHands(frame)
+#         return hands, image_hand
+
+
         # img = frame.to_image()
         # imgOutput = img.copy()
         # hands, img = detector.findHands(img)
@@ -65,17 +73,17 @@ class MyVideoTransformer(VideoProcessorBase):
         #    return av.VideoFrame.from_image(frame_tr)
 
 
-st.title("Sign language interpreter")
+# st.title("Sign language interpreter")
 
-RTC_CONFIGURATION = RTCConfiguration(
-     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-)
+# RTC_CONFIGURATION = RTCConfiguration(
+#      {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+# )
 
-webrtc_ctx = webrtc_streamer(
-    key="key",
-    video_processor_factory=MyVideoTransformer,
-    mode=WebRtcMode.SENDRECV,
-    rtc_configuration=RTC_CONFIGURATION,
-    media_stream_constraints={"video": True, "audio": False},
-    async_processing=True
-)
+# webrtc_ctx = webrtc_streamer(
+#     key="object-detection",
+#     video_processor_factory=MyVideoTransformer,
+#     mode=WebRtcMode.SENDRECV,
+#     rtc_configuration=RTC_CONFIGURATION,
+#     media_stream_constraints={"video": True, "audio": False},
+#     async_processing=True
+# )
