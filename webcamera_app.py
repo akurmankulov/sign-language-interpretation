@@ -7,17 +7,17 @@ from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration
 import numpy as np
 import math
 
-detector = HandDetector(maxHands=1)
-model = load_model("./base_line_model/base_cnn_model")
-offset = 20
-imgSize = 300
+# detector = HandDetector(maxHands=1)
+# model = load_model("./base_line_model/base_cnn_model")
+# offset = 20
+# imgSize = 300
 
-with open('labels_4.txt') as f:
-    labels = [i.split()[1] for i in f.readlines()]
+# with open('labels_4.txt') as f:
+#     labels = [i.split()[1] for i in f.readlines()]
 
 
 class VideoProcessor:
-    def video_frame_callback(self, frame):
+    def recv(self, frame):
         return frame
         # img = frame.to_image()
         # imgOutput = img.copy()
