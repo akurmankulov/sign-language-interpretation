@@ -19,7 +19,7 @@ class MyVideoTransformer(VideoProcessorBase):
     def __init__(self):
         self.hand_detector = HandDetector(maxHands=1)
 
-    def transform(self, frame):
+    def recv(self, frame):
         hands, image_hand = self.hand_detector.findHands(frame)
         return hands, image_hand
         # img = frame.to_image()
