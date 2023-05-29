@@ -70,9 +70,9 @@ st.title("Sign language interpreter")
 
 webrtc_streamer( #webrtc_ctx =
     key="example",
-    video_transformer_factory=VideoProcessor,
+    video_processor_factory=VideoProcessor,
     # mode=WebRtcMode.SENDRECV,
     # rtc_configuration=RTC_CONFIGURATION,
     # media_stream_constraints={"video": True, "audio": False},
-    async_transform=True
+    async_processing=True
 )
