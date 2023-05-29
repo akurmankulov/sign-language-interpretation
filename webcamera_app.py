@@ -16,7 +16,7 @@ import math
 #     labels = [i.split()[1] for i in f.readlines()]
 
 
-class VideoProcessor(VideoTransformerBase):
+class VideoProcessor:
     def transform(self, frame):
         return frame
         # img = frame.to_image()
@@ -64,15 +64,15 @@ class VideoProcessor(VideoTransformerBase):
 
 st.title("Sign language interpreter")
 
-# RTC_CONFIGURATION = RTCConfiguration(
-#     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
-# )
+RTC_CONFIGURATION = RTCConfiguration(
+     {"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+)
 
 webrtc_streamer( #webrtc_ctx =
-    key="example",
+    key="key",
     video_processor_factory=VideoProcessor,
     # mode=WebRtcMode.SENDRECV,
-    # rtc_configuration=RTC_CONFIGURATION,
-    # media_stream_constraints={"video": True, "audio": False},
+    rtc_configuration=RTC_CONFIGURATION,
+    media_stream_constraints={"video": True, "audio": False},
     async_processing=True
 )
