@@ -5,7 +5,7 @@ from tensorflow.keras.models import load_model
 import numpy as np
 import pandas as pd
 import math
-import time
+#import time
 import os
 
 cap = cv2.VideoCapture(0)
