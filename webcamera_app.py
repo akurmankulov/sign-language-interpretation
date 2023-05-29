@@ -10,6 +10,10 @@ import math
 st.title("My first Streamlit app")
 st.write("Hello, world")
 
+threshold1 = st.slider("Threshold1", min_value=0, max_value=1000, step=1, value=100)
+threshold2 = st.slider("Threshold2", min_value=0, max_value=1000, step=1, value=200)
+
+
 def callback(frame):
     img = frame.to_ndarray(format="bgr24")
 
