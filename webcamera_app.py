@@ -3,7 +3,7 @@ import cv2
 from cvzone.HandTrackingModule import HandDetector
 from tensorflow.keras.models import load_model
 import av
-from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration, VideoTransformerBase
+from streamlit_webrtc import webrtc_streamer, WebRtcMode, RTCConfiguration, VideoProcessorBase
 import numpy as np
 import math
 
@@ -16,7 +16,7 @@ import math
 #     labels = [i.split()[1] for i in f.readlines()]
 
 
-class MyVideoTransformer(VideoTransformerBase):
+class MyVideoTransformer(VideoProcessorBase):
     def __init__(self):
         self.hand_detector = HandDetector(maxHands=1)
 
