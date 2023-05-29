@@ -16,8 +16,9 @@ import math
 #     labels = [i.split()[1] for i in f.readlines()]
 
 
-class VideoProcessor:
+class VideoProcessor(VideoTransformerBase):
     def transform(self, frame):
+        print('Hello')
         return frame
         # img = frame.to_image()
         # imgOutput = img.copy()
@@ -71,7 +72,7 @@ RTC_CONFIGURATION = RTCConfiguration(
 webrtc_streamer( #webrtc_ctx =
     key="key",
     video_processor_factory=VideoProcessor,
-    # mode=WebRtcMode.SENDRECV,
+    mode=WebRtcMode.SENDRECV,
     rtc_configuration=RTC_CONFIGURATION,
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True
