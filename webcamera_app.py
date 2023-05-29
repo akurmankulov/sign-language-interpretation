@@ -74,10 +74,10 @@ def main():
         async_transform=True
     )
 
-    if webrtc_ctx.video_transformer:
-        # You can access the transformed frames here if async_transform=False
-        transformed_frame = webrtc_ctx.video_transformer.get_transformed_frame()
-        # Display the transformed frame using OpenCV or any other library
+    # if webrtc_ctx.video_transformer:
+    #     # You can access the transformed frames here if async_transform=False
+    #     transformed_frame = webrtc_ctx.video_transformer.get_transformed_frame()
+    #     # Display the transformed frame using OpenCV or any other library
 
 if __name__ == "__main__":
     main()
