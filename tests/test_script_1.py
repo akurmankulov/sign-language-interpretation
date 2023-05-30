@@ -9,21 +9,7 @@ sys.path.append('../')
 
 from aslr import ASLRecognition
 
-#you can specify a test variable aka fixture
-@pytest.fixture
-def path1():
-    return "tests/test_image_A.jpg"
-
-@pytest.fixture
-def path2():
-    return "tests/test_image_U.jpg"
-
-# it is possible to have a list of values and fixture will automatically run for each
-@pytest.fixture(params=["tests/test_image_A.jpg", "tests/test_image_F.jpg", "tests/test_image_U.jpg"])
-def path(request):
-    return request.param
-
-# a direct variable creation also works of course
+# using fixtures defined in the test_full.py file, but a local direct variable creation also works of course
 path_var="tests/test_image_F.jpg"
 
 @pytest.mark.parametrize('input_path , expected_type', [ ("tests/test_image_A.jpg", str), ("tests/test_image_U.jpg", str)] )
