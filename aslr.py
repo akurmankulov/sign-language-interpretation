@@ -1,6 +1,6 @@
 import numpy as np
 # import pandas as pd
-import cv2
+# import cv2
 import string
 from PIL import Image
 # from sklearn.metrics import accuracy_score
@@ -60,17 +60,19 @@ class  ASLRecognition:
         self.__dict__['array'] = self.image_
         return self
 
-    def preprocessing(self, img_size = (300,300), rescale = None):
+    def preprocessing(self, img_size = (300,300), rescale = False):#None):
         """
         The input image format should be a numpy array, and the rescale is the scaler used to divide the image for normalization
         """
 
         if img_size != self.image_.shape[:2]:
-            self.image_ = self.image_.resize(img_size)
+            # self.image_ = self.image_.resize(img_size)
+            self.image_ = np.resize(self.image_, img_size)
             self.__dict__['resize'] = self.image_
 
         if rescale:
             self.image_ = self.image_*1.0/255
+            self.__dict__['array'] = self.image_ #otherwise rescaled version is not stored
 
         self.image_  = expand_dims(self.image_,axis = 0)
 
@@ -90,3 +92,9 @@ class  ASLRecognition:
 
     def train(self):
         pass
+
+# Here we add the testing part
+# if __name__ == "__main__":
+#     print("Let the testing commence")
+#     a=ASLRecognition()
+#     a.read_image(image=)

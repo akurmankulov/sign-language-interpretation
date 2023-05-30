@@ -1,4 +1,3 @@
-import pytest
 from PIL import Image
 import numpy as np
 import os
@@ -9,12 +8,7 @@ sys.path.append('../')
 
 from aslr import ASLRecognition
 
-# it is possible to have a list of values and fixture will automatically run for each
-@pytest.fixture(params=["tests/test_image_A.jpg", "tests/test_image_F.jpg", "tests/test_image_U.jpg"])
-def path(request):
-    return request.param
-
-def test_many_images_np_shape(path):
+def test_read_array_shape(path):
     """
     Test the shape of the image array loaded by ASLRecognition for multiple images.
 
