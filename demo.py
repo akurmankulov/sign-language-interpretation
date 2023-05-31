@@ -13,7 +13,6 @@ import time
 import av
 import sys
 
-cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
 
 # Define the number of frames to use for prediction
@@ -34,7 +33,6 @@ letters = {'0':'A', '1':'B', '2':'C', '3':'D', '4':'E', '5':'F', '6':'G', '7':'H
 ### App part
 st.title("Sign language interpreter")
 frame_placeholder = st.empty()
-
 
 class VideoProcessor:
     def recv(self, frame):
