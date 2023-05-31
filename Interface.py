@@ -18,12 +18,12 @@ st.markdown(
         \n - webcam stream
         """
     # Set the font size using HTML tags
-    "<h2 style='font-size: 32px;'>👈 Select an option from the dropdown!</h2>   "     
-    
+    "<h2 style='font-size: 32px;'>👈 Select an option from the dropdown!</h2>   "
+
     , unsafe_allow_html=True)
 
 # Add an image to the main page
-image = "ASL_image.jpg"
+image = "ASL_kaggle_image.png"
 st.image(image, use_column_width=True)
 
 # demo_options = {

@@ -1,28 +1,8 @@
-#streamlit-webrtc
-#streamlit
-#opencv-python-headless
-##opencv-contrib-python-headless
-#cvzone
-##opencv-python
-#mediapipe
-#pip>=9
-#aiortc
-#numpy
-#tensorflow
-
-# opencv-contrib-python==4.7.0.72
-# opencv-python==4.7.0.72
-# opencv-python-headless==4.7.0.72
-# streamlit==1.22.0
-# streamlit-webrtc==0.45.0
-# mediapipe==0.8.9.1
-# aiortc==1.5.0
-# cvzone==1.5.6
-tensorflow==2.12.0
-numpy==1.22.2
-
+streamlit==1.22.0
+streamlit-webrtc==0.45.0
+opencv-python-headless==4.7.0.72
 cvzone==1.5.6
-opencv-python-headless==4.5.4.60
-opencv-python==4.5.4.60
-streamlit==1.2.0
-streamlit-webrtc==0.35.1
+mediapipe==0.8.9.1
+numpy==1.22.2
+tensorflow==2.12.0
+pillow
