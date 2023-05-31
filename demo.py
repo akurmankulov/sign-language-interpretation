@@ -97,7 +97,7 @@ class VideoProcessor:
             cv2.rectangle(imgOutput, (x-offset, y-offset), (x+w+offset, y+h+offset), (255, 0, 255), 4)
 
         frame = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
-        return av.VideoFrame.from_image(frame) #, format="bgr24"
+        return av.VideoFrame.from_ndarray(frame) #, format="bgr24"
 
 webrtc_ctx = webrtc_streamer(
     key="object-detection",
