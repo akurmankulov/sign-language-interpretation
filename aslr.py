@@ -1,4 +1,6 @@
 import numpy as np
+# import pandas as pd
+# import cv2
 import string
 from PIL import Image
 from tensorflow.keras.models import load_model
@@ -100,7 +102,7 @@ class  ASLRecognition:
             print('Error: Unrecognized Image')
             return None
 
-    def preprocessing(self, img_size = (300,300), rescale = None):
+    def preprocessing(self, img_size = (300,300), rescale = False):#None):
         """
         Preprocess the input image.
 
