@@ -8,7 +8,6 @@ st.set_page_config(
 
 st.sidebar.success("Select a demo")
 
-
 st.title("Welcome dear friend")
 
 st.markdown(
@@ -25,13 +24,3 @@ st.markdown(
 # Add an image to the main page
 image = "ASL_kaggle_image.png"
 st.image(image, use_column_width=True)
-
-# demo_options = {
-#     "—": intro,
-#     "Prediction from uploaded image": upload_demo,
-#     "Preditopn from webcam": webcam_demo,
-#     "References": team_info
-# }
-
-# demo_name = st.sidebar.selectbox("Choose an option", demo_options.keys())
-# demo_options[demo_name]()
