@@ -13,11 +13,11 @@ import tensorflow.keras.applications as pretrain_models
 # from aslr import ASLRecognition
 #
 # model = ASLRecognition()
-# model.loadmodel('model_path')             #where model_path is the location of model, and threshold for the
-#                                           #probability can be specified. Default is 0.5
-# model.read_image() or model.read_array()  #read the input as an jpg file or an array
-# model.preprocessing().predict(image)      #proprocessing and then predict. The input image size should
-#                                           #be specified in the preprocessing if not (300,300).
+# model.loadmodel('model_path')             # where model_path is the location of model, and threshold for the
+#                                           # probability can be specified. Default is 0.5
+# model.read_image() or model.read_array()  # read the input as an jpg file or an array
+# model.preprocessing().predict(image)      # proprocessing and then predict. The input image size should
+#                                           # be specified in the preprocessing if not (300,300).
 #################################################
 
 
@@ -221,10 +221,26 @@ class  ASLRecognition:
         self.model_trainable_ = True
         return self
 
-    def fit(self,X_train,y_train,X_val,y_val,epochs = 50,batch_size = 64,verbose = 0,callbacks = ['es']):
+    def fit(self,X_train,y_train,X_val,y_val,epochs = 50,batch_size = 64,verbose = 0,callbacks = ['es','reduce_lr'],es_patience = 5,reduce_lr_patience = 5):
+        """
+        This used to train the that can be trained.
+        Args:
+            X_train: the X train dataset.
+            y_train: the label for train dataset
+            X_val: the dataset use for validation
+            y_val: the label for validation datasets
+            epochs: the maximum epochs for the optimization
+            batchsize: the batch size in the optimization
+            verbose: the verbose
+            callbacks: the callbacks method used.
+            es_patience: the patience parameter for EarlyStopping method
+            reduce_lr_patience: the patience parameter for ReduceLROnplateau
+        Returns:
+            Return the ASLRecognition object with the model fitted. If the model is loaded from a trained one,
+            then self.model_trainable is set to False so no model is trained.
+        """
         if self.model_trainable:
-            es = EarlyStopping(patience = 5, restore_best_weights = True)
-            reduc_lr = ReduceLROnPlateau(patience = 3,verbose = verbose)
-            self.model_.fit(X_train,y_train,validation_data = (X_val,y_val),callbacks=['es','reduc_lr'])
-            return self
-        return None
+            es = EarlyStopping(patience = es_patience, restore_best_weights = True)
+            reduce_lr = ReduceLROnPlateau(patience = reduce_lr_patience,verbose = verbose)
+            self.model_.fit(X_train,y_train,validation_data = (X_val,y_val),callbacks=callbacks)
+        return self
