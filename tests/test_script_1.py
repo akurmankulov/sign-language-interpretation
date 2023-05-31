@@ -12,7 +12,7 @@ from aslr import ASLRecognition
 # using fixtures defined in the test_full.py file, but a local direct variable creation also works of course
 path_var="tests/test_image_F.jpg"
 
-@pytest.mark.parametrize('input_path , expected_type', [ ("tests/test_image_A.jpg", str), ("tests/test_image_U.jpg", str)] )
+@pytest.mark.parametrize('input_path , expected_type', [ ("tests/test_image_A.jpg", str), ("tests/test_image_G.jpg", str)] )
 def test_image_path(input_path, expected_type):
     """
     Test the type of the input path.
@@ -28,7 +28,7 @@ def test_image_path(input_path, expected_type):
     _a.read_image(input_path)
     assert type(input_path) == expected_type
 
-@pytest.mark.parametrize('input_path , shape', [ (path_var, (200, 200, 3)), ("tests/test_image_U.jpg", (300, 300, 3))] )
+@pytest.mark.parametrize('input_path , shape', [ (path_var, (200, 200, 3)), ("tests/test_image_G.jpg", (300, 300, 3))] )
 def test_image_orig_shape(input_path, shape):
     """
     Test the shape of the original image loaded by ASLRecognition.
