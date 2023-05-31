@@ -22,7 +22,7 @@ num_frames = 5
 frame_buffer = []
 
 # Load the trained model & set the input shape parameters for model
-model_path = sys.path.append('../Model/model_resnet50_100_landmark.keras')
+model_path = sys.path.append('Model/model_resnet50_100_landmark.keras')
 model = load_model(model_path)
 offset = 20
 imgSize = 300
