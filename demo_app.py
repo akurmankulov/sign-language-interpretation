@@ -11,6 +11,7 @@ import os
 from tensorflow.keras.applications.resnet50 import preprocess_input
 import time
 import av
+import sys
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(maxHands=1)
@@ -21,7 +22,8 @@ num_frames = 5
 frame_buffer = []
 
 # Load the trained model & set the input shape parameters for model
-model = load_model(os.path.abspath(os.path.join(os.path.dirname( __file__ ),"..","Model","model_resnet50_100_landmark.keras")))
+model_path = sys.path.append('..', "Model","model_resnet50_100_landmark.keras")
+model = load_model(model_path)
 offset = 20
 imgSize = 300
 imgSize_to_model = 100
