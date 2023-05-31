@@ -85,11 +85,13 @@ def callback(frame):
                 if len(frame_buffer) == num_frames:
                     final_predict = pd.DataFrame(frame_buffer).reset_index(drop=True).value_counts().keys()[0][0]
         except:
+            print('Exception')
             frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
             return av.VideoFrame.from_ndarray(frame_pr)
         cv2.rectangle(imgOutput, (x-offset, y-offset-50), (x-offset+90, y-offset), (255, 0, 255), cv2.FILLED)
         cv2.putText(imgOutput, final_predict, (x, y-27), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255,255,255), 2)
         cv2.rectangle(imgOutput, (x-offset, y-offset), (x+w+offset, y+h+offset), (255, 0, 255), 4)
+    print(final_predict)
     frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
     return av.VideoFrame.from_ndarray(frame_pr) #, format="bgr24"
 
