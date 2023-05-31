@@ -13,6 +13,7 @@ def path1():
 @pytest.fixture
 def path2():
     return "tests/test_image_G.jpg"
+    return "tests/test_image_U.jpg"
 
 @pytest.fixture
 def path3():
