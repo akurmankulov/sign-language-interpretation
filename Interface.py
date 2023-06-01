@@ -12,9 +12,7 @@ st.title("Welcome dear friend")
 
 st.markdown(
     """
-    We can help you interpret [American sign language](https://en.wikipedia.org/wiki/American_Sign_Language) from:
-        \n - uploaded image or
-        \n - webcam stream
+    We can help you interpret [American sign language](https://en.wikipedia.org/wiki/American_Sign_Language) from the webcam stream:
         """
     # Set the font size using HTML tags
     "<h2 style='font-size: 32px;'>👈 Select an option from the dropdown!</h2>   "
