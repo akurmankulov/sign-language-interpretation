@@ -12,6 +12,7 @@ import time
 import av
 import sys
 
+sys.path.append('../')
 model = load_model('../Model/model_resnet50_100_landmark.keras')
 offset = 20
 imgSize = 300
