@@ -88,14 +88,19 @@ class VideoProcessor(VideoProcessorBase):
         #frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
         return av.VideoFrame.from_ndarray(imgOutput, format="bgr24")
 
-webrtc_ctx = webrtc_streamer(
-    key="object-detection",
-    mode=WebRtcMode.SENDRECV,
-    rtc_configuration={
-        "iceServers": get_ice_servers(),
-        "iceTransportPolicy": "relay",
-    },
-    video_processor_factory=VideoProcessor,
-    media_stream_constraints={"video": True, "audio": False},
-    async_processing=True,
-)
+@st.cache
+def init_webcam():
+    webrtc_ctx = webrtc_streamer(
+        key="object-detection",
+        mode=WebRtcMode.SENDRECV,
+        rtc_configuration={
+            "iceServers": get_ice_servers(),
+            "iceTransportPolicy": "relay",
+        },
+        video_processor_factory=VideoProcessor,
+        media_stream_constraints={"video": True, "audio": False},
+        async_processing=True,
+    )
+    return webrtc_ctx
+
+webrtc_ctx = init_webcam()
