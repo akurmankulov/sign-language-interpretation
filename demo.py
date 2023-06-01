@@ -88,7 +88,7 @@ class VideoProcessor(VideoProcessorBase):
         #frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
         return av.VideoFrame.from_ndarray(imgOutput, format="bgr24")
 
-@st.cache
+@st.cache_resource
 def init_webcam():
     webrtc_ctx = webrtc_streamer(
         key="object-detection",
