@@ -11,6 +11,7 @@ from tensorflow.keras.applications.resnet50 import preprocess_input
 import time
 import av
 import sys
+import queue
 
 sys.path.append('../')
 model = load_model('Model/model_resnet50_100_landmark.keras')
@@ -20,10 +21,11 @@ imgSize_to_model = 100
 letters = {'0':'A', '1':'B', '2':'C', '3':'D', '4':'E', '5':'F', '6':'G', '7':'H', '8':'I', '9':'K', '10':'L', '11':'M', '12':'N',
            '13':'O', '14':'P', '15':'Q', '16':'R', '17':'S', '18':'T', '19':'U', '20':'V', '21':'W', '22':'X', '23':'Y'}
 
+result_queue= queue.Queue()
 ### App part
 st.title("Sign language interpreter")
-delete_button_pressed = st.button("Delete")
-text_placeholder = st.empty()
+#delete_button_pressed = st.button("Delete")
+
 
 class VideoProcessor(VideoProcessorBase):
     def __init__(self):
@@ -32,9 +34,7 @@ class VideoProcessor(VideoProcessorBase):
         self.num_frames = 5
         self.final_predict = ''
         self.final_text = ''
-        self.t = 0
         self.letters2display = []
-        self.text_gen_time = 25
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
@@ -93,19 +93,23 @@ class VideoProcessor(VideoProcessorBase):
             cv2.putText(imgOutput, self.final_predict, (x, y-27), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255,255,255), 2)
             cv2.rectangle(imgOutput, (x-offset, y-offset), (x+w+offset, y+h+offset), (255, 0, 255), 4)
             self.letters2display.append(self.final_predict)
-            if len(self.letters2display) % self.text_gen_time==0:
-                letter = pd.DataFrame(self.letters2display[-self.text_gen_time:] ).reset_index(drop=True).value_counts().keys()[0][0]
-                st.session_state['final_text']+=letter
-                text_placeholder.header(st.session_state['final_text'])
-            self.t=0
+            if len(self.letters2display) % text_gen_time==0:
+                letter = pd.DataFrame(self.letters2display[-text_gen_time:] ).reset_index(drop=True).value_counts().keys()[0][0]
+                self.final_text += letter
+                print(self.final_text)
+                result_queue.put(self.final_text)
+                #text_placeholder.header(self.final_text)
+            t=0
         t+=1
         if t == 40:
             self.final_text += ' '
-        if delete_button_pressed:
-            self.final_text = self.final_text[:-1]
-            text_placeholder.header(self.final_text)
-            delete_button_pressed=False
-        #frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
+            result_queue.put(self.final_text)
+        # if delete_button_pressed:
+        #     self.final_text = self.final_text[:-1]
+        #     text_placeholder.header(self.final_text)
+        #     delete_button_pressed=False
+        # #frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
+
         return av.VideoFrame.from_ndarray(imgOutput, format="bgr24")
 
 webrtc_ctx = webrtc_streamer(
@@ -119,3 +123,10 @@ webrtc_ctx = webrtc_streamer(
     media_stream_constraints={"video": True, "audio": False},
     async_processing=True,
 )
+
+#if st.checkbox("Show the word", value=True):
+if webrtc_ctx.state.playing and not result_queue.empty():
+    text_placeholder = st.empty()
+    while True:
+        result = result_queue.get()
+        text_placeholder.header(result)
