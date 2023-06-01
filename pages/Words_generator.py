@@ -12,7 +12,7 @@ import time
 import av
 import sys
 
-model = load_model('Model/model_resnet50_100_landmark.keras')
+model = load_model('../Model/model_resnet50_100_landmark.keras')
 offset = 20
 imgSize = 300
 imgSize_to_model = 100
@@ -21,6 +21,8 @@ letters = {'0':'A', '1':'B', '2':'C', '3':'D', '4':'E', '5':'F', '6':'G', '7':'H
 
 ### App part
 st.title("Sign language interpreter")
+delete_button_pressed = st.button("Delete")
+text_placeholder = st.empty()
 
 class VideoProcessor(VideoProcessorBase):
     def __init__(self):
@@ -28,6 +30,10 @@ class VideoProcessor(VideoProcessorBase):
         self.frame_buffer = []
         self.num_frames = 5
         self.final_predict = ''
+        self.final_text = ''
+        self.t = 0
+        self.letters2display = []
+        self.text_gen_time = 25
 
     def recv(self, frame):
         img = frame.to_ndarray(format="bgr24")
@@ -85,6 +91,19 @@ class VideoProcessor(VideoProcessorBase):
             cv2.rectangle(imgOutput, (x-offset, y-offset-50), (x-offset+90, y-offset), (255, 0, 255), cv2.FILLED)
             cv2.putText(imgOutput, self.final_predict, (x, y-27), cv2.FONT_HERSHEY_COMPLEX, 1.7, (255,255,255), 2)
             cv2.rectangle(imgOutput, (x-offset, y-offset), (x+w+offset, y+h+offset), (255, 0, 255), 4)
+            self.letters2display.append(self.final_predict)
+            if len(self.letters2display) % self.text_gen_time==0:
+                letter = pd.DataFrame(self.letters2display[-self.text_gen_time:] ).reset_index(drop=True).value_counts().keys()[0][0]
+                st.session_state['final_text']+=letter
+                text_placeholder.header(st.session_state['final_text'])
+            self.t=0
+        t+=1
+        if t == 40:
+            self.final_text += ' '
+        if delete_button_pressed:
+            self.final_text = self.final_text[:-1]
+            text_placeholder.header(self.final_text)
+            delete_button_pressed=False
         #frame_pr = cv2.cvtColor(imgOutput, cv2.COLOR_BGR2RGB)
         return av.VideoFrame.from_ndarray(imgOutput, format="bgr24")
 
