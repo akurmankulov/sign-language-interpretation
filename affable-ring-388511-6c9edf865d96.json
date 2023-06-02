@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "affable-ring-388511",
+  "private_key_id": "6c9edf865d964fee957611b89e05face9909b690",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDHMV/PDfqXg5rY\n20V59HXHmcP5FECvW3eyetyqKX4rjun5Cmzg/S1uPPVDMaSSgdMB6OFZzVSOEy9R\nBsLJxTo1R5YpT9Y8FdN3ULCzata9aDeZsNXT7hj2RaG3NZN/3JOmASgprB4hm8/3\nE+zVoRyM0DPCJmjTEa5+bQW/Mh8Xcyyb24rK9E1j6giboQzbLArghsKbW3LA/3FT\nYCns1TiObxmCBqFIP5qSBHUQqwAbA6JXu0nvVMkW5g46Uhyqoyt/GNju8ffuHsIu\nR4a43Z9ft1geIQym2UunOCFlwhg/YiL2zVudPSb14Lxd6WKQGpdC53/Oy7qMcydg\nqG+RPC/jAgMBAAECggEAHJrzEtWDlKmiHZ1Tm2FnXpwu4ACwD1630EpDkS43P8Mc\nx5ZfL2o8UXXwlM82vpFlP4N1hUNu7p5Dr8OkSnyH0OnwXwtnjSZnQV21mnZv0zB5\nt5kFBBPPwuIaCKjpfzWqgG7vGRjuFM5+7ZEPdFhYNMKbhDim2hTSdbZrWls0ytWP\nBtDvAnSf766FZ6ep21rF2GxB+nK37oV4TVj/bSQ9523jShS80rXIPN5wiKjsjn77\nCTB3Ld7qcj+gUXz3aji/ZYQnLLYQeVGkfdLWI/3H4L8oPpqKZrR4Lf1QACtsqO3S\nYpLVbXMcZiq+9Q372G725d1J/eUhEn57qfzMj4E4lQKBgQDlq2ojwDj/43Ys0901\nMcBie/PAHER/ofnHa0Q7QwKRRc6bRBiBDshHJ9W4Hmf/mToazaPKh/64FCHmCDqZ\nfr7V6yRmRHYpIZ8WZAFvNe0Unc5VFIZPuxp7QEA7O31SaV27FRVnQkDPdEQdJeob\nD1o9K6FcF48BTqTQ0UsqB/j3RQKBgQDeB38oQIEAN0+VfR/O0jDilWWWUDshRjwV\naLhC34a1Kj/UStmNFVc0AePX6ca3Pm/m7YmpsRMr0Axmgm9mlA2G0Vh8tOwWaHN9\ngkqpnImlJDZ62Yvp1hVeuzkSh7ETyKYGMWkuWnRJp07g9+nt7t2AiznLVeHjNXes\nFHxjU4wJBwKBgQDFcWDVDUqzScPtc9IHChdfUzpQ3LxSkVhfhSrqW4hYhY/B0X/T\na3boHSnRmGpFxV+7bTAzTEjBzaT60fY2wUykMPtg49hFMf9HS4AkMFL511RrtjJl\nVu/EJ49QnKr3b1fCHrUAyWdYMZbhDBg/XSpxzhFxT1uEfyyXzGX241W4lQKBgQCq\nqoiLoEmIqPt7pRp2GAuLn9rel/1brmkw67X3cWpSh49Y19AyKl1FlM5WgVRGNrA9\niglvbrWVz+44Pbrz1oovP2wNL+TptJBRwX0ysyj6z8Mw21g4/l6e2rscC0GKO4mi\n6Qg4oT8R/pEbTHV8d0e8L0jVi8Z+p/K9S2Hx156ksQKBgF604mm33MGXC3sxzAfJ\nrqsh5DMG1rbQj6b90gFdR0lqmkIgc6QF7+26xLLDzcegTMvTOwUJewBpckbLWE48\nurS8Fvk8qiUOgR7NKSDvTW0Svel4R3mkUh94snq3+tRjVNbEvSRJsm6bZ1NRBHvJ\n3i0GC4NVE+VbKA7RCdqdgCTP\n-----END PRIVATE KEY-----\n",
+  "client_email": "myaccount@affable-ring-388511.iam.gserviceaccount.com",
+  "client_id": "104333041861966423086",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/myaccount%40affable-ring-388511.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
